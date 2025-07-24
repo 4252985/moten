@@ -1,0 +1,57 @@
+{
+  "name": "moten",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "packageManager": "pnpm@7.9.5",
+  "type": "module",
+  "engines": {
+    "pnpm": ">=7",
+    "node": ">=18"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "in": "pnpm i -r",
+    "ui": "pnpm -F @moten/ui dev",
+    "ui:build": "pnpm -F @moten/ui build",
+    "clean": "rimraf --glob pnpm-lock.yaml ./node_modules ./packages/**/node_modules ./packages/**/dist",
+    "play:vue3": "pnpm -F @moten/ui build && pnpm -F @moten/playground-vue3 dev",
+    "play:vue2": "pnpm -F @moten/ui build && pnpm -F @moten/playground-vue2 dev",
+    "prepare": "husky install",
+    "lint": "pnpm -F @moten/admin lint"
+  },
+  "lint-staged": {
+    "*.{vue,ts,js}": "pnpm lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "pnpm": {
+    "packageExtensions": {
+      "vue-template-compiler": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      },
+      "vue-template-compiler@2.7.16": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "eslint": "8",
+    "eslint-plugin-vue": "^10.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "3.5.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3",
+    "vue-eslint-parser": "^10.2.0"
+  }
+}
